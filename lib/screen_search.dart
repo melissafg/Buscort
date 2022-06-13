@@ -35,39 +35,50 @@ class screenSearch extends State<screen_search>{
                 Text("BUSCORT", style: Theme.of(context).textTheme.headline5,),
               ],
             ),
-
           ],
         ),
+        title: Text("TRADUCIR", style: Theme.of(context).textTheme.headline4,),
       ),
-        body:  Container(
-          width: double.infinity,
-          color: Colors.white,
-          
+        body:  Center(
+          child:  MyStatefulWidget(),
         ),
     );
   }
 
 }
-class dropdownState extends State<screen_search>{
-  final lista = ['España', 'Peru','Bolivia','Argentina','Ecuador', 'Chile', 'Colombia'];
-  String? texto;
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar (title: Text('Dropdown Menu'), centerTitle: true),
-    body: Center(
-      child: DropdownButton<String>(
-        items: lista.map(crearLista).toList(),
-        onChanged: (value)=> setState(() =>this.texto= value),
-      ),
-    ),
-  );
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
 
-  DropdownMenuItem<String> crearLista(String item) => DropdownMenuItem(
-    value: item,
-    child: Text(
-      item,
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-    ),
-  );
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  String dropdownValue = 'Argentina';
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: const Icon(Icons.arrow_downward),
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },
+      items: <String>['Argentina', 'Bolivia', 'Chile', 'Colombia','Ecuador','España','México','Peru','Uruguay']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
 }
