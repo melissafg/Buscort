@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:proyecto_carnes/screen_menu.dart';
 import 'package:proyecto_carnes/screen_options.dart';
+import 'package:proyecto_carnes/screen_result.dart';
 
 class screen_search extends StatefulWidget{
   @override
@@ -77,15 +78,58 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     print("Nombre ${dropdownValue1}");
     print("Nombre $dropdownValue2");
     print("Corte ${corte}");
+    for(var v in diccionario.keys){
+      if (v==dropdownValue1){
+        print("encontro ${v}");
+        for(var l in diccionario[v]!.keys){
+            if(l == corte){
+              print(l);
+              Corte1= diccionario[v]![l]!;
+              print(Corte1);
+            }
+        }
+      }
+
+    }
+    for(var v in diccionario.keys){
+      if (v==dropdownValue2){
+        print("encontro ${v}");
+        for(var l in diccionario[v]!.values){
+          if(l == Corte1){
+            print(l);
+            print("");
+          }
+        }
+      }
+
+    }
+    print("traduccion");
   }
+  String Corte1="";
   String dropdownValue1 = 'Argentina';
   String dropdownValue2 = 'Argentina';
   String corte = "Lomo";
+  static const diccionario = {
+    'Bolivia':{
+      'Peceto':'1',
+      'Punta de S':'2',
+      'Cuadril': '3',
+      'Bife Angosto':'4'
+    },
+    'España':{
+      'Redondo': '1',
+      'Tapilla': '2',
+      'Falda':'3',
+      'lomo bajo':'4'
+
+    }
+  };
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 500,
       child: SizedBox(
         width: 200,
         child: Column(
