@@ -41,47 +41,29 @@ class screenSearch extends State<screen_search>{
       ),
       body:  Container(
         color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: const <Widget>[
-                    Text('Seleccione país de origen:'),
-                    DropdownStateful(),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children:  <Widget>[
-                Column(
-                  children: const <Widget>[
-                    Text('Seleccione país de traducción:'),
-                    MyStatefulWidget(),
-                  ],
-                ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: const <Widget>[
+                      Text('Seleccione país de origen:'),
+                      DropdownStateful(),
+                      Text('Seleccione país de traducción:'),
+                      MyStatefulWidget(),
+                    ],
+                  ),
 
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                MaterialButton(
-                  shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10.0)),
-                  minWidth: 80.0,
-                  height: 50.0,
-                  onPressed: (){},
-                  color: Color(0xFF6E1300),
-                  child: Text('Traducir', style: Theme.of(context).textTheme.headline6,),
-                )
-              ],
-            ),
-          ],
+                ],
+              ),
+              MyInputWidget(),
+
+            ],
+          ),
         ),
+
       ),
     );
   }
@@ -102,7 +84,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 100,
       child: SizedBox(
         width: 200,
         child: DropdownButtonFormField<String>(
@@ -150,7 +132,7 @@ class _MyDropdownStatefulState extends State<DropdownStateful> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 200,
+        height: 100,
         child: SizedBox(
           width: 200,
           child: DropdownButtonFormField<String>(
@@ -180,5 +162,58 @@ class _MyDropdownStatefulState extends State<DropdownStateful> {
         ),
     );
 
+  }
+}
+
+
+
+class MyInputWidget extends StatefulWidget {
+  const MyInputWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyInputWidget> createState() => _MyInputWidgetState();
+}
+
+class _MyInputWidgetState extends State<MyInputWidget> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(
+            width: 200,
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: 'Escriba el corte de carne',
+              ),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Por favor llene este campo';
+                }
+                return null;
+              },
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(12),
+            child: ElevatedButton(
+              onPressed: () {
+                // Validate will return true if the form is valid, or false if
+                // the form is invalid.
+                if (_formKey.currentState!.validate()) {
+                  // Process data.
+                }
+              },
+              child: const Text('Traducir'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
