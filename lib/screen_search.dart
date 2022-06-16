@@ -84,7 +84,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         for(var l in diccionario[v]!.keys){
             if(l == corte){
               print(l);
-              Corte1= diccionario[v]![l]!;
+              palabra= l;
+              Corte1=diccionario[v]![l]!;
               print(Corte1);
             }
         }
@@ -94,33 +95,35 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     for(var v in diccionario.keys){
       if (v==dropdownValue2){
         print("encontro ${v}");
-        for(var l in diccionario[v]!.values){
-          if(l == Corte1){
-            print(l);
-            print("");
+        diccionario[v]!.forEach((k, s) {
+          if(s == Corte1){
+            traduccion = k;
+            print(traduccion);
           }
-        }
-      }
 
-    }
-    print("traduccion");
+        });
+      }
+       }
+
   }
-  String Corte1="";
+  int Corte1= 0;
+  String palabra="";
+  String traduccion="";
   String dropdownValue1 = 'Argentina';
   String dropdownValue2 = 'Argentina';
   String corte = "Lomo";
   static const diccionario = {
     'Bolivia':{
-      'Peceto':'1',
-      'Punta de S':'2',
-      'Cuadril': '3',
-      'Bife Angosto':'4'
+      'Peceto':1,
+      'Punta de S':2,
+      'Cuadril': 3,
+      'Bife Angosto':4
     },
     'España':{
-      'Redondo': '1',
-      'Tapilla': '2',
-      'Falda':'3',
-      'lomo bajo':'4'
+      'Redondo': 1,
+      'Tapilla': 2,
+      'Falda':3,
+      'lomo bajo':4
 
     }
   };
