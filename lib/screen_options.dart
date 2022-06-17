@@ -75,10 +75,6 @@ class pageOptions extends State<screen_options>{
                   minWidth: 220.0,
                   height: 120.0,
                   onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder:(context) => screen_search_pork()),
-                    );
                   },
                   color: Color(0xFF6E1300),
                   child: Text('VER CORTES', style: Theme.of(context).textTheme.headline6,),
