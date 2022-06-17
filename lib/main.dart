@@ -15,7 +15,7 @@ class carga extends StatelessWidget{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "BusCort",
-      home: screen_menu(),
+      home: screen_home(),
       theme: ThemeData(
         primaryColor: Colors.white,
           textTheme: const TextTheme(
