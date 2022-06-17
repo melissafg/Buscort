@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_carnes/screen_options.dart';
 import 'package:proyecto_carnes/screen_result.dart';
 
-class screen_search extends StatefulWidget{
+class screen_search_pork extends StatefulWidget{
   @override
-  screenSearch createState()=>screenSearch();
+  screenSearchPork createState()=>screenSearchPork();
 }
-class screenSearch extends State<screen_search>{
+class screenSearchPork extends State<screen_search_pork>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -23,7 +23,7 @@ class screenSearch extends State<screen_search>{
             Column(
               children: <Widget>[
                 IconButton(
-                  icon: Image.asset('assets/vaca.png'),
+                  icon: Image.asset('assets/cerdo.png'),
                   iconSize: 40.0,
                   onPressed: () {
                     Navigator.push(
@@ -41,24 +41,24 @@ class screenSearch extends State<screen_search>{
       ),
       body:  Container(
         color: Colors.white,
-    child: SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: SingleChildScrollView(
+          child: Column(
             children: <Widget>[
-              Column(
-                children: const <Widget>[
-                  MyStatefulWidget(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: const <Widget>[
+                      MyStatefulWidget(),
+                    ],
+                  ),
+
                 ],
               ),
 
             ],
           ),
-
-        ],
-      ),
-    ),
+        ),
 
       ),
     );
@@ -81,12 +81,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       if (v==dropdownValue1){
         print("encontro ${v}");
         for(var l in diccionario[v]!.keys){
-            if(l == corte){
-              print(l);
-              palabra= l;
-              Corte1=diccionario[v]![l]!;
-              print(Corte1);
-            }
+          if(l == corte){
+            print(l);
+            palabra= l;
+            Corte1=diccionario[v]![l]!;
+            print(Corte1);
+          }
         }
       }
 
@@ -102,7 +102,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
         });
       }
-       }
+    }
     {
       Navigator.push(
         context,

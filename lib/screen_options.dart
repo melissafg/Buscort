@@ -3,6 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:proyecto_carnes/screen_menu.dart';
 import 'package:proyecto_carnes/screen_search.dart';
+import 'package:proyecto_carnes/screen_search_pork.dart';
+
+
 
 class screen_options extends StatefulWidget{
   @override
@@ -71,7 +74,12 @@ class pageOptions extends State<screen_options>{
                   shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(22.0)),
                   minWidth: 220.0,
                   height: 120.0,
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder:(context) => screen_search_pork()),
+                    );
+                  },
                   color: Color(0xFF6E1300),
                   child: Text('VER CORTES', style: Theme.of(context).textTheme.headline6,),
                 )

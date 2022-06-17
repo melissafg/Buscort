@@ -19,6 +19,7 @@ class carga extends StatelessWidget{
       theme: ThemeData(
         primaryColor: Colors.white,
           textTheme: const TextTheme(
+
             headline1:TextStyle(
               fontSize: 36.0,
               fontWeight: FontWeight.bold,
@@ -49,6 +50,7 @@ class carga extends StatelessWidget{
               fontWeight: FontWeight.bold,
               color: Color(0xFF6E1300),
             ),
+
           )
       ),
     );
