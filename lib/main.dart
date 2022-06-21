@@ -5,9 +5,17 @@ import 'package:proyecto_carnes/screen_menu.dart';
 import 'package:proyecto_carnes/screen_options.dart';
 import 'package:proyecto_carnes/screen_search.dart';
 import 'package:proyecto_carnes/screen_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main(){
-  runApp(carga());
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((value) {
+    runApp(carga());
+  });
+
 }
 class carga extends StatelessWidget{
   @override

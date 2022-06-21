@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1021038287531",
+    "firebase_url": "https://buscord-1bb38-default-rtdb.firebaseio.com",
+    "project_id": "buscord-1bb38",
+    "storage_bucket": "buscord-1bb38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021038287531:android:71c2a84b13b92a3118f5ee",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_carnes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021038287531-72r6lnhgdoo5lvaofd7avjrv5mqkm6sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQcteuo3I138Rn95mCgJ-XsFWspRsT664"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021038287531-72r6lnhgdoo5lvaofd7avjrv5mqkm6sq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1021038287531-i1d89tntdh555ob4b8fru0b60u3gjlno.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.proyectoCarnes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
