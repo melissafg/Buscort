@@ -61,15 +61,17 @@ class screenCam extends State<screen_cam>{
                 ),
               ):Container(
             height: 300,
-            decoration: const BoxDecoration(
-              color: Colors.grey,
-             ),
+            decoration: BoxDecoration(
+                color: Colors.grey[300],
+                image: DecorationImage(
+                  image: FileImage(_pickedImage!),
+                  fit: BoxFit.fill,
+                )),
           ),
           Container(
             height: 50,
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-           child: Column(
-             children: [
+             child:
                ElevatedButton(
                  onPressed:  (){
                    opciones(context);
@@ -81,13 +83,26 @@ class screenCam extends State<screen_cam>{
                          color: Colors.white,
                          fontWeight: FontWeight.bold)),
                ),
-               _pickedImage == null? Center(): Image.file(_pickedImage!)
-             ],
-           ),
 
+           ),
+          const SizedBox(height: 20),
+          Scanning
+              ? Center(child: CircularProgressIndicator())
+              : Icon(
+            Icons.done,
+            size: 40,
+            color: Colors.green,
+          ),
+          SizedBox(height: 20),
+          Center(
+            child: Text(
+              extract,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          const SizedBox(
-            height: 20,
           )
         ],
       ),
@@ -171,11 +186,11 @@ class screenCam extends State<screen_cam>{
       getFile = await picker.pickImage(source: ImageSource.camera);
     }else{
       getFile = await picker.pickImage(source: ImageSource.gallery);
+      _pickedImage = File(getFile.path);
       extract = await FlutterTesseractOcr.extractText(_pickedImage!.path);
     }
     setState((){
       if(getFile!= null){
-        _pickedImage = File(getFile.path());
         Scanning = false;
       }else{
          print("no se selecciono ninguna imagen");
