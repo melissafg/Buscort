@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:proyecto_carnes/screen_cam.dart';
 import 'package:proyecto_carnes/screen_options.dart';
 import 'package:proyecto_carnes/screen_result.dart';
 
@@ -75,8 +76,16 @@ class MyStatefulWidget extends StatefulWidget {
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  void getCorte() async{
-    CollectionReference collectionReference = FirebaseFirestore.instance.collection("Cortes");
+
+  void Cam(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder:(context) => screen_cam()),
+    );
+  }
+
+  void getCorte(String pais) async{
+    CollectionReference collectionReference = FirebaseFirestore.instance.collection(pais);
     QuerySnapshot corte = await collectionReference.get();
     if(corte.docs.length != 0){
       for(var doc in corte.docs){
@@ -88,7 +97,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     print("Nombre ${dropdownValue1}");
     print("Nombre $dropdownValue2");
     print("Corte ${corte}");
-    getCorte();
+    getCorte(dropdownValue1);
     print(traduccion);
     for(var v in diccionario.keys){
       if (v==dropdownValue1){
@@ -121,7 +130,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         context,
         MaterialPageRoute(builder:(context) => screen_result(res: traduccion,)),
       );
-    };
+    }
 
   }
   int Corte1= 0;
@@ -476,6 +485,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                     textStyle: const TextStyle(
                         fontSize: 20,
+                        fontWeight: FontWeight.bold)),
+
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: ElevatedButton(
+                onPressed: Cam,
+                child: const Text('Usar Cámara'),
+                style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFF6E1300),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    textStyle: const TextStyle(
+                        fontSize: 15,
                         fontWeight: FontWeight.bold)),
 
               ),
